@@ -35,4 +35,9 @@ public class Employee {
     @NotBlank
     private String department;
 
+    public Employee(String name, Integer salary, String department) {
+        this.name = name;
+        this.salary = salary;
+        this.department = department;
+    }
 }

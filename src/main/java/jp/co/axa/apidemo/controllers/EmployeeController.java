@@ -36,7 +36,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees")
-    public void saveEmployee(@RequestBody @Validated Employee employee, BindingResult bindingResult)
+    public Employee saveEmployee(@RequestBody @Validated Employee employee, BindingResult bindingResult)
             throws BindException {
         if (employee.getId() != null) {
             bindingResult.rejectValue("id", "", "must not be set");
@@ -44,8 +44,8 @@ public class EmployeeController {
         if (bindingResult.hasErrors()) {
             throw new BindException(bindingResult);
         }
-        employeeService.saveEmployee(employee);
         logger.info("Employee Saved Successfully");
+        return employeeService.saveEmployee(employee);
     }
 
     @DeleteMapping("/employees/{employeeId}")
