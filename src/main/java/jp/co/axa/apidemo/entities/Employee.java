@@ -3,12 +3,9 @@ package jp.co.axa.apidemo.entities;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="EMPLOYEE")
@@ -23,16 +20,19 @@ public class Employee {
     @Getter
     @Setter
     @Column(name="EMPLOYEE_NAME")
+    @NotBlank
     private String name;
 
     @Getter
     @Setter
     @Column(name="EMPLOYEE_SALARY")
+    @Min(0)
     private Integer salary;
 
     @Getter
     @Setter
     @Column(name="DEPARTMENT")
+    @NotBlank
     private String department;
 
 }
