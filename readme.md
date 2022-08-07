@@ -53,4 +53,5 @@ Please let us know more about your Java experience in a few sentences. For examp
 
 ### What I did
   - upgrade dependencies
-  - Implement a general advice to handle controller exceptions and provide detailed responses
+  - implement validation
+  - Implement a general advice to handle validation errors and provide detailed responses
