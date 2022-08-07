@@ -51,7 +51,7 @@ public class EmployeeController {
     @DeleteMapping("/employees/{employeeId}")
     public void deleteEmployee(@PathVariable(name="employeeId")Long employeeId){
         if (!employeeService.existsById(employeeId)) {
-            throw new NoSuchElementException(String.format("The specified employee{id=%d} not exist.", employeeId));
+            throw new NoSuchElementException(String.format("The specified employee{id=%d} does not exist.", employeeId));
         }
         employeeService.deleteEmployee(employeeId);
         logger.info("Employee Deleted Successfully");
