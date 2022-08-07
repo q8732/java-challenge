@@ -5,6 +5,7 @@ import jp.co.axa.apidemo.services.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ValidationUtils;
@@ -21,15 +22,23 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1")
 public class EmployeeController {
+    @Value("${page.size}")
+    int DEFAULT_PAGE_SIZE;
+
     Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private EmployeeService employeeService;
 
+    /**
+     * Get a list of available employees, with optional pagination.
+     * @param page zero-indexed page number
+     * @param pageSize {@link #DEFAULT_PAGE_SIZE} is used if absent
+     */
     @GetMapping("/employees")
     public List<Employee> getEmployees(Optional<Integer> page, Optional<Integer> pageSize) {
         if (page.isPresent()) {
-            return employeeService.retrievePage(page.get(), pageSize.orElse(15));
+            return employeeService.retrievePage(page.get(), pageSize.orElse(DEFAULT_PAGE_SIZE));
         }
         return employeeService.retrieveEmployees();
     }
