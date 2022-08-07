@@ -3,6 +3,9 @@ package jp.co.axa.apidemo.services;
 import jp.co.axa.apidemo.entities.Employee;
 import jp.co.axa.apidemo.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         return employeeRepository.findAll();
     }
 
+    @Cacheable("employee")
     public Employee getEmployee(Long employeeId) {
         Optional<Employee> optEmp = employeeRepository.findById(employeeId);
         return optEmp.orElseThrow(
@@ -26,20 +30,21 @@ public class EmployeeServiceImpl implements EmployeeService{
         );
     }
 
+    @CachePut(value = "employee", key = "#employee.getId()")
     public Employee saveEmployee(Employee employee){
         employeeRepository.save(employee);
         return employee;
     }
 
+    @CacheEvict("employee")
     public void deleteEmployee(Long employeeId){
         employeeRepository.deleteById(employeeId);
     }
 
     public void updateEmployee(Employee employee) {
-        employeeRepository.save(employee);
+        this.saveEmployee(employee);
     }
 
-    @Override
     public boolean existsById(Long employeeId) {
         return employeeRepository.existsById(employeeId);
     }
