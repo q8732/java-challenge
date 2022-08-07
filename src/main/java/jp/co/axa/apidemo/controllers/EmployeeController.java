@@ -63,7 +63,8 @@ public class EmployeeController {
                                @PathVariable(name="employeeId")Long employeeId) throws BindException {
         ValidationUtils.rejectIfEmpty(bindingResult, "id", "", "must be set");
         if (employee.getId() != null && !employee.getId().equals(employeeId)) {
-            bindingResult.rejectValue("id", "", "ids are not matched");
+            bindingResult.rejectValue("id", "",
+                    String.format("ids{%d, %d} are not matched",employeeId, employee.getId()));
         }
         if (bindingResult.hasErrors()) {
             throw new BindException(bindingResult);
