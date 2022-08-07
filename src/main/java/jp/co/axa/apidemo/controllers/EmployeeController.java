@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 /**
  * A REST controller provides CRUD operations on {@link Employee} by supported HTTP methods.
@@ -26,7 +27,10 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping("/employees")
-    public List<Employee> getEmployees() {
+    public List<Employee> getEmployees(Optional<Integer> page, Optional<Integer> pageSize) {
+        if (page.isPresent()) {
+            return employeeService.retrievePage(page.get(), pageSize.orElse(15));
+        }
         return employeeService.retrieveEmployees();
     }
 
