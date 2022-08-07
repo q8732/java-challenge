@@ -5,7 +5,7 @@
 
 Application (with the embedded H2 database) is ready to be used ! You can access the url below for testing it :
 
-- Swagger UI : http://localhost:8080/swagger-ui.html
+- Swagger UI : http://localhost:8080/swagger-ui/
 - H2 UI : http://localhost:8080/h2-console
 
 > Don't forget to set the `JDBC URL` value as `jdbc:h2:mem:testdb` for H2 UI.
@@ -15,7 +15,7 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 ### Instructions
 
 - download the zip file of this project
-- create a repository in your own github named 'java-challenge'
+- create a repository in your own GitHub named 'java-challenge'
 - clone your repository in a folder on your machine
 - extract the zip file in this folder
 - commit and push
@@ -50,3 +50,7 @@ Please let us know more about your Java experience in a few sentences. For examp
 - I have 3 years experience in Java and I started to use Spring Boot from last year
 - I'm a beginner and just recently learned Spring Boot
 - I know Spring Boot very well and have been using it for many years
+
+### What I did
+  - upgrade dependencies
+  - Implement a general advice to handle controller exceptions and provide detailed responses
