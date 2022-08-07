@@ -35,6 +35,13 @@ public class Employee {
     @NotBlank
     private String department;
 
+    /**
+     * A default constructor is required from ORM
+     */
+    public Employee() {
+        //noop
+    }
+
     public Employee(String name, Integer salary, String department) {
         this.name = name;
         this.salary = salary;
