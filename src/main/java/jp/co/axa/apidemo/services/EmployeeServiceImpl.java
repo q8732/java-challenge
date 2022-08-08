@@ -5,6 +5,7 @@ import jp.co.axa.apidemo.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -31,6 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @CachePut(value = "employee", key = "#employee.getId()")
     @CacheEvict(value = "list", allEntries = true)
+    @Transactional
     public Employee saveEmployee(Employee employee){
         employeeRepository.save(employee);
         return employee;
@@ -43,6 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @CachePut(value = "employee", key = "#employee.getId()")
     @CacheEvict(value = "list", allEntries = true)
+    @Transactional
     public Employee updateEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
