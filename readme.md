@@ -53,5 +53,7 @@ Please let us know more about your Java experience in a few sentences. For examp
 
 ### What I did
   - upgrade dependencies
-  - implement validation
-  - Implement a general advice to handle validation errors and provide detailed responses
+  - implement validation logic for entities
+  - implement a general advice to handle validation errors and provide detailed responses
+  - enable cache over methods requiring db access
+  - enable transaction management
