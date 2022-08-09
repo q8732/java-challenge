@@ -12,13 +12,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Optional;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
+@SpringBootTest(properties = "spring.cache.type=none")
 @AutoConfigureMockMvc
 public class EmployeeController_ReadTest {
     @Autowired
@@ -50,5 +51,27 @@ public class EmployeeController_ReadTest {
                 .andExpect(jsonPath("$").isEmpty())
         ;
         verify(employeeRepository).findAll();
+    }
+
+    @Test
+    public void testGetEmployee() throws Exception {
+        Employee foo = new Employee("foo", 1000, "it");
+        foo.setId(888l);
+        when(employeeRepository.findById(888l)).thenReturn(Optional.of(foo));
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/employees/888"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").value(foo))
+                ;
+        verify(employeeRepository).findById(888l);
+    }
+
+    @Test
+    public void testGetEmployee_NotFound() throws Exception {
+        when(employeeRepository.findById(888l)).thenReturn(Optional.empty());
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/employees/888"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.message").value("The specified employee{id=888} not exist."));
+                ;
+        verify(employeeRepository).findById(888l);
     }
 }

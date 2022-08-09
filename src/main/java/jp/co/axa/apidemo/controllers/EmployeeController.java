@@ -64,7 +64,7 @@ public class EmployeeController {
     @DeleteMapping("/employees/{employeeId}")
     public void deleteEmployee(@PathVariable(name="employeeId")Long employeeId){
         if (!employeeService.existsById(employeeId)) {
-            throw new NoSuchElementException(String.format("The specified employee{id=%d} not exist.", employeeId));
+            throw new NoSuchElementException(String.format("The specified employee{id=%d} does not exist.", employeeId));
         }
         employeeService.deleteEmployee(employeeId);
         logger.info("Employee Deleted Successfully");
@@ -76,7 +76,8 @@ public class EmployeeController {
                                @PathVariable(name="employeeId")Long employeeId) throws BindException {
         ValidationUtils.rejectIfEmpty(bindingResult, "id", "", "must be set");
         if (employee.getId() != null && !employee.getId().equals(employeeId)) {
-            bindingResult.rejectValue("id", "", "ids are not matched");
+            bindingResult.rejectValue("id", "",
+                    String.format("ids{%d, %d} are not matched",employeeId, employee.getId()));
         }
         if (bindingResult.hasErrors()) {
             throw new BindException(bindingResult);
