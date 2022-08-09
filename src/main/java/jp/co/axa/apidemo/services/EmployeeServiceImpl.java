@@ -3,6 +3,7 @@ package jp.co.axa.apidemo.services;
 import jp.co.axa.apidemo.entities.Employee;
 import jp.co.axa.apidemo.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,5 +53,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     public boolean existsById(Long employeeId) {
         return employeeRepository.existsById(employeeId);
+    }
+
+    @Override
+    public List<Employee> retrievePage(Integer page, Integer pageSize) {
+        return employeeRepository.findAll(PageRequest.of(page, pageSize)).getContent();
     }
 }

@@ -17,4 +17,6 @@ public interface EmployeeService {
     public Employee updateEmployee(Employee employee);
 
     boolean existsById(Long employeeId);
+
+    List<Employee> retrievePage(Integer page, Integer pageSize);
 }
