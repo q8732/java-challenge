@@ -9,11 +9,14 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 /**
- * A base class for test to provide a default test environment.
+ * A base class to provide a default test environment.
+ * <li>disabled caching</li>
+ * <li>without database</li>
  */
-@SpringBootTest(properties = {"spring.cache.type=none", "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration"})
+@SpringBootTest(properties = {"spring.cache.type=none",
+                "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration"})
 @AutoConfigureMockMvc
-public class BaseTest {
+public class NoDatabaseTest {
     @Autowired
     MockMvc mockMvc;
     @MockBean

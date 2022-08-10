@@ -35,8 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     @CacheEvict(value = "list", allEntries = true)
     @Transactional
     public Employee saveEmployee(Employee employee){
-        employeeRepository.save(employee);
-        return employee;
+        return employeeRepository.save(employee);
     }
 
     @Caching(evict = {@CacheEvict({"employee"}), @CacheEvict(value = "list", allEntries = true)})

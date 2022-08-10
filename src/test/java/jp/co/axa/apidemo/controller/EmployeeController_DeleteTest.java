@@ -9,7 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class EmployeeController_DeleteTest extends BaseTest {
+public class EmployeeController_DeleteTest extends NoDatabaseTest {
     @Test
     public void testDeleteEmployee() throws Exception {
         when(employeeRepository.existsById(1l)).thenReturn(true);

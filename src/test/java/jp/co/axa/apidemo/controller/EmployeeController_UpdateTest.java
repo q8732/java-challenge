@@ -11,7 +11,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class EmployeeController_UpdateTest extends BaseTest{
+public class EmployeeController_UpdateTest extends NoDatabaseTest {
     @Test
     public void testUpdateEmployee() throws Exception {
         Employee foo = new Employee("foo", 1, "hr");
