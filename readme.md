@@ -34,26 +34,29 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 - use java 8
 
 
-#### What we will look for
-- Readability of your code
-- Documentation
-- Comments in your code 
-- Appropriate usage of spring boot
-- Appropriate usage of packages
-- Is the application running as expected
-- No performance issues
 
-#### Your experience in Java
 
-Please let us know more about your Java experience in a few sentences. For example:
-
-- I have 3 years experience in Java and I started to use Spring Boot from last year
-- I'm a beginner and just recently learned Spring Boot
-- I know Spring Boot very well and have been using it for many years
+### My experience in Java
+- I have 10+ years experience in Java.
+- I started to use Spring Boot from 2019, and before that 
+I had used other DI container which made my experience with Spring Boot much easier.
 
 ### What I did
-  - upgrade dependencies
-  - implement validation logic for entities
-  - implement a general advice to handle validation errors and provide detailed responses
-  - enable cache over methods requiring db access
-  - enable transaction management
+- upgraded dependencies to the latest
+  - Spring Boot **v2.7.2**
+  - Springfox   **v3.0.0**
+- implemented validation logic for entities
+  - implement general advice to handle validation errors and provide detailed responses
+- added tests
+- enabled transaction management
+- improved performance with 
+  - enable caching
+  - add pagination support on list operation
+- tweaked springfox/swagger
+
+### What I will do in the future
+- implement authentication to protect end points
+- use a cache provider rather than the default
+  - possible providers
+    - JCache 
+    - Redis
