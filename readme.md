@@ -5,7 +5,7 @@
 
 Application (with the embedded H2 database) is ready to be used ! You can access the url below for testing it :
 
-- Swagger UI : http://localhost:8080/swagger-ui.html
+- Swagger UI : http://localhost:8080/swagger-ui/
 - H2 UI : http://localhost:8080/h2-console
 
 > Don't forget to set the `JDBC URL` value as `jdbc:h2:mem:testdb` for H2 UI.
@@ -15,7 +15,7 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 ### Instructions
 
 - download the zip file of this project
-- create a repository in your own github named 'java-challenge'
+- create a repository in your own GitHub named 'java-challenge'
 - clone your repository in a folder on your machine
 - extract the zip file in this folder
 - commit and push
@@ -34,19 +34,29 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 - use java 8
 
 
-#### What we will look for
-- Readability of your code
-- Documentation
-- Comments in your code 
-- Appropriate usage of spring boot
-- Appropriate usage of packages
-- Is the application running as expected
-- No performance issues
 
-#### Your experience in Java
 
-Please let us know more about your Java experience in a few sentences. For example:
+### My experience in Java
+- I have 10+ years experience in Java.
+- I started to use Spring Boot from 2019, and before that 
+I had used other DI container which made my experience with Spring Boot much easier.
 
-- I have 3 years experience in Java and I started to use Spring Boot from last year
-- I'm a beginner and just recently learned Spring Boot
-- I know Spring Boot very well and have been using it for many years
+### What I did
+- upgraded dependencies to the latest
+  - Spring Boot **v2.7.2**
+  - Springfox   **v3.0.0**
+- implemented validation logic for entities
+  - implement general advice to handle validation errors and provide detailed responses
+- added tests
+- enabled transaction management
+- improved performance with 
+  - enable caching
+  - add pagination support on list operation
+- tweaked springfox/swagger
+
+### What I will do in the future
+- implement authentication to protect end points
+- use a cache provider rather than the default
+  - possible providers
+    - JCache 
+    - Redis
