@@ -53,9 +53,11 @@ I had used other DI container which made my experience with Spring Boot much eas
   - enable caching
   - add pagination support on list operation
 - tweaked springfox/swagger
+  - show relevant API document only
 
 ### What I will do in the future
 - implement authentication to protect end points
+  - authentication based on token
 - use a cache provider rather than the default
   - possible providers
     - JCache 
